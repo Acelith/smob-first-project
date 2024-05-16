@@ -8,7 +8,7 @@
 
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View,  } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
@@ -33,7 +33,7 @@ const StopDetail = ({ route }) => {
     }, []);
 
     return (
-        <ScrollView>
+        <ScrollView style={stylesStops.containerScroll}>
             <View>
                 {stopData.stationboard && (
                     <View>
@@ -50,5 +50,4 @@ const StopDetail = ({ route }) => {
         </ScrollView>
     )
 }
-
 export default StopDetail;

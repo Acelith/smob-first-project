@@ -4,7 +4,7 @@ Autore: Joël Jon Moix && Lara Simonetti
 Utilità: File di stile per le componenti
 Utilizzo: chiamare la variabile e selezionare lo stile desiderato
 */
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 
 const stylesStops = StyleSheet.create({
@@ -16,6 +16,8 @@ const stylesStops = StyleSheet.create({
       backgroundColor: '#fff',
       margin: 10,
       padding: 10,
+    },containerScroll: {
+      height: Dimensions.get('window').height,
     },
   });
 

@@ -14,6 +14,7 @@ import usePosition from "../hooks/usePosition";
 
 // Importo stopDetail
 import StopDetail from "../components/StopDetail";
+import { ScrollView } from "react-native-web";
 
 const Fermate = () => {
   const navigation = useNavigation();
@@ -40,14 +41,19 @@ const Fermate = () => {
     }
   }, [location]);
   return (
-    stopsData.stations &&
-    stopsData.stations?.slice(1).map((fermata) => (
-      <View key={fermata.id}>
-        <Pressable style={stylesStops.card} onPress={() => goto(fermata.id)}>
-          <Text>{fermata.name}</Text>
-        </Pressable>
-      </View>
-    ))
+    <ScrollView style={stylesStops.containerScroll}>
+      {stopsData.stations &&
+        stopsData.stations?.slice(1).map((fermata) => (
+          <View key={fermata.id}>
+            <Pressable
+              style={stylesStops.card}
+              onPress={() => goto(fermata.id)}
+            >
+              <Text>{fermata.name}</Text>
+            </Pressable>
+          </View>
+        ))}
+    </ScrollView>
   );
 };
 export default Fermate;
