@@ -1,13 +1,9 @@
 /*
     StopDetail.js
     Autore: Lara Simonetti
-    Utilità: questa componente è stata sviluppata per ...
-    Utilizzo: per utilizzare questa componente è necessario includerla ...., 
-passarle in argomento (props, ...) n dati nel formato yyyy
-*/
-
-/*
-data.station?.slice(1).map(...)
+    Utilità: questa componente è stata sviluppata per visualizzare le linee in partenza con direzione e orario di partenza
+    Utilizzo: per utilizzare questa componente è necessario includerla in App.js,
+    passarle in argomento (props, ...) n dati nel formato yyyy
 */
 
 import moment from "moment";
@@ -37,7 +33,7 @@ const StopDetail = (details) => {
                 {stopData.stationboard.map((index) => (
                     <View>
                     <Text key={index}>{stopData.to}</Text>
-                    <Text key={index}>{stopData.stop.departureTimestamp}</Text>
+                    <Text key={index}>{stopData.stop.departure}</Text>
                     </View>
                 ))}
                 </View>
