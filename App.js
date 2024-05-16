@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Fermate from "./components/Stop";
-
+//TODO: Fare la stack per la navigazione 
 export default function App() {
   return (
     <View style={styles.container}>

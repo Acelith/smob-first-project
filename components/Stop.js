@@ -5,31 +5,25 @@ Utilità: Questa è la schermta principale di selezione per le fermate dell'auto
 Utilizzo: 
 */
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-
+import { stylesStops } from "../styles/globalStyles";
+import {useNavigation} from "@react-navigation/native";
 // Importo hook per posizione
 import usePosition from "../hooks/usePosition";
 
+// Importo stopDetail
+import StopDetail from "../components/StopDetail";
+
 const Fermate = () => {
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
   //utilizzo l'hook personalizzato, che ritorna posizione e un eventuale errore
   const { location, errorMessage } = usePosition();
   const [stopsData, setStopsData] = useState([]);
-  /*
-  //Se l'hook va in errore fermo l'esecuzione a faccio vedere l'errore
-  if (errorMessage) {
-    return <Text>{errorMessage}</Text>;
-  }
-
-  //Aspetto che l'hook abbia finito di caricare la posizione
-  if (!location) {
-    return <Text>Caricamento fermate...</Text>;
-  }
-*/
 
   useEffect(() => {
     const fetchData = async () => {
+      //Faccio la richiesta API
       const API_URL = "https://transport.opendata.ch/v1/";
       const API_URI = `locations?x=${location.coords.latitude}&y=${location.coords.logitude}&type=all`;
 
@@ -43,11 +37,20 @@ const Fermate = () => {
   }, [location]);
   return (
     <View>
-      {stopsData.name && (
-        <View>
-          <Text>${stopsData.station.name}</Text>
-        </View>
-      )}
+      {stopsData.stations &&
+        stopsData.stations?.slice(1).map((fermata) => (
+          <View>
+            <Text style={stylesStops.card}>{fermata.name}</Text>
+            <Pressable
+              style={stylesStops.card}
+              onPress={() => {
+                navigation.push(StopDetail, fermata.itemId);
+              }}
+            >
+              {fermata.name}
+            </Pressable>
+          </View>
+        ))}
     </View>
   );
 };
