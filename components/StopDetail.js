@@ -6,18 +6,23 @@
 passarle in argomento (props, ...) n dati nel formato yyyy
 */
 
+/*
+data.station?.slice(1).map(...)
+*/
+
 import { useEffect } from "react";
+import { View } from "react-native";
 
-const API_DETAIL = "http://transport.opendata.ch/v1/stationboard";
+const API_URL = "http://transport.opendata.ch/v1/stationboard";
 
 
 
-const StopDetail = (props) => {
+const StopDetail = (details) => {
     const [stopData, setStopData] = useState();
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
-            const response = await fetch(`${API_DETAIL}?id=${props.station.id}`);
+            const response = await fetch(`${API_URL}?id=${details.station.id}&limit=20`);
             const data = await response.json();
             setStopData(data);
         };
@@ -25,10 +30,13 @@ const StopDetail = (props) => {
     }, []);
 
     return (
-        <div>
-            <h1>{props.stopData.name}</h1>
-            <p>{props.stopData.description}</p>
-        </div>
+        <View>
+            <text>Linea 1</text>
+            {stopData.stationboard && (
+                <text>{details.stationboard.to}</text>
+                <text>{details.stationboard.TimeStamp}</text>
+            )}
+        </View>
     )
 }
 
