@@ -10,15 +10,15 @@ passarle in argomento (props, ...) n dati nel formato yyyy
 data.station?.slice(1).map(...)
 */
 
+import moment from "moment";
 import { useEffect } from "react";
 import { Text, View } from "react-native";
 
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
-
-
+const formattedDate = moment('').format('YYYY-MM-DD HH:mm:ss')
 
 const StopDetail = (details) => {
-    const [stopData, setStopData] = useState();
+    const [stopData, setStopData] = useState([]);
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
@@ -33,8 +33,14 @@ const StopDetail = (details) => {
         <View>
             <Text>Linea 1</Text>
             {stopData.stationboard && (
-                <Text>{details.to}</Text>
-                //<Text>{details.TimeStamp}</Text>
+                <View>
+                {stopData.stationboard.map((index) => (
+                    <View>
+                    <Text key={index}>{stopData.to}</Text>
+                    <Text key={index}>{stopData.stop.departureTimestamp}</Text>
+                    </View>
+                ))}
+                </View>
             )}
         </View>
     )
