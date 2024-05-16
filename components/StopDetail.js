@@ -7,42 +7,47 @@
 */
 
 import moment from "moment";
-import { useEffect,useState } from "react";
-import { Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import { ScrollView, Text, View } from "react-native";
+import { stylesStops } from "../styles/globalStyles";
 
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
 
 
-const StopDetail = ({route}) => {
+const StopDetail = ({ route }) => {
+    //console.log(route)
     const [stopData, setStopData] = useState([]);
-    const stationId = route.station.id
+    const stationId = route.params.id
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
             const response = await fetch(`${API_URL}?id=${stationId}&limit=20`);
             const data = await response.json();
-            data.map((item) => {
+            data.stationboard.map((item) => {
                 item.stop.departure = moment(item.stop.departure).format('HH:mm');
             })
             setStopData(data);
+            //console.log(data.stationboard)
         };
         fetchStopDetailData();
     }, []);
 
     return (
-        <View>
-            <Text>Linea 1</Text>
-            {stopData.stationboard && (
-                <View>
-                {stopData.stationboard.map((index) => (
+        <ScrollView>
+            <View>
+                {stopData.stationboard && (
                     <View>
-                    <Text key={index}>{stopData.to}</Text>
-                    <Text key={index}>{stopData.stop.departure}</Text>
+                        {stopData.stationboard?.map((itemId) => (
+                            <View style={stylesStops.card}>
+                                <Text>Linea 1</Text>
+                                <Text>{itemId.to}</Text>
+                                <Text>{itemId.stop.departure}</Text>
+                            </View>
+                        ))}
                     </View>
-                ))}
-                </View>
-            )}
-        </View>
+                )}
+            </View>
+        </ScrollView>
     )
 }
 
