@@ -11,7 +11,7 @@ data.station?.slice(1).map(...)
 */
 
 import { useEffect } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
 
@@ -31,10 +31,10 @@ const StopDetail = (details) => {
 
     return (
         <View>
-            <text>Linea 1</text>
+            <Text>Linea 1</Text>
             {stopData.stationboard && (
-                <text>{details.stationboard.to}</text>
-                <text>{details.stationboard.TimeStamp}</text>
+                <Text>{details.to}</Text>
+                //<Text>{details.TimeStamp}</Text>
             )}
         </View>
     )
