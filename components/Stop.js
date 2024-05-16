@@ -44,7 +44,7 @@ const Fermate = () => {
             <Pressable
               style={stylesStops.card}
               onPress={() => {
-                navigation.push(StopDetail, fermata.itemId);
+                navigation.push(StopDetail, fermata.Id);
               }}
             >
               {fermata.name}
