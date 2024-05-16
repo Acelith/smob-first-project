@@ -13,12 +13,12 @@ import { Text, View } from "react-native";
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
 const formattedDate = moment('').format('YYYY-MM-DD HH:mm:ss')
 
-const StopDetail = (details) => {
+const StopDetail = (id) => {
     const [stopData, setStopData] = useState([]);
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
-            const response = await fetch(`${API_URL}?id=${details.station.id}&limit=20`);
+            const response = await fetch(`${API_URL}?id=${id}&limit=20`);
             const data = await response.json();
             setStopData(data);
         };
