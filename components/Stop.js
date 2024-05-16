@@ -8,7 +8,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { stylesStops } from "../styles/globalStyles";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 // Importo hook per posizione
 import usePosition from "../hooks/usePosition";
 
@@ -17,6 +17,9 @@ import StopDetail from "../components/StopDetail";
 
 const Fermate = () => {
   const navigation = useNavigation();
+  const goto = (id) => {
+    navigation.push("StopDetail", { id: id });
+  };
   //utilizzo l'hook personalizzato, che ritorna posizione e un eventuale errore
   const { location, errorMessage } = usePosition();
   const [stopsData, setStopsData] = useState([]);
@@ -28,6 +31,7 @@ const Fermate = () => {
       const API_URI = `locations?x=${location.coords.latitude}&y=${location.coords.logitude}&type=all`;
 
       const response = await fetch(`${API_URL}${API_URI}`);
+
       const data = await response.json();
       setStopsData(data);
     };
@@ -36,22 +40,14 @@ const Fermate = () => {
     }
   }, [location]);
   return (
-    <View>
-      {stopsData.stations &&
-        stopsData.stations?.slice(1).map((fermata) => (
-          <View>
-            <Text style={stylesStops.card}>{fermata.name}</Text>
-            <Pressable
-              style={stylesStops.card}
-              onPress={() => {
-                navigation.push(StopDetail, fermata.Id);
-              }}
-            >
-              {fermata.name}
-            </Pressable>
-          </View>
-        ))}
-    </View>
+    stopsData.stations &&
+    stopsData.stations?.slice(1).map((fermata) => (
+      <View key={fermata.id}>
+        <Pressable style={stylesStops.card} onPress={() => goto(fermata.id)}>
+          <Text>{fermata.name}</Text>
+        </Pressable>
+      </View>
+    ))
   );
 };
 export default Fermate;

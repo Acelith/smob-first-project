@@ -7,7 +7,7 @@
 */
 
 import moment from "moment";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { Text, View } from "react-native";
 
 const API_URL = "http://transport.opendata.ch/v1/stationboard";
