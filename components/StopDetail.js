@@ -40,8 +40,8 @@ const StopDetail = ({ route }) => {
                         {stopData.stationboard?.map((itemId) => (
                             <View style={stylesStops.card}>
                                 <Text>Linea 1</Text>
-                                <Text>{itemId.to}</Text>
-                                <Text>{itemId.stop.departure}</Text>
+                                <Text>Direction: {itemId.to}</Text>
+                                <Text>Departure at: {itemId.stop.departure}</Text>
                             </View>
                         ))}
                     </View>
