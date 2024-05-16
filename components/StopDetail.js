@@ -37,11 +37,11 @@ const StopDetail = ({ route }) => {
             <View>
                 {stopData.stationboard && (
                     <View>
-                        {stopData.stationboard?.map((itemId) => (
-                            <View style={stylesStops.card}>
+                        {stopData.stationboard?.map((linee, index) => (
+                            <View key={index} style={stylesStops.card}>
                                 <Text>Linea 1</Text>
-                                <Text>Direction: {itemId.to}</Text>
-                                <Text>Departure at: {itemId.stop.departure}</Text>
+                                <Text>Direction: {linee.to}</Text>
+                                <Text>Departure at: {linee.stop.departure}</Text>
                             </View>
                         ))}
                     </View>
