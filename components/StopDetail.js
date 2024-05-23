@@ -12,6 +12,7 @@ import { ScrollView, Text, View,  } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 
 import {API_URL} from "../config/config";
+import RowStopDetail from "./RowStopDetail";
 
 const StopDetail = ({ route }) => {
     //console.log(route)
@@ -26,7 +27,7 @@ const StopDetail = ({ route }) => {
                 item.stop.departure = moment(item.stop.departure).format('HH:mm');
             })
             setStopData(data);
-            console.log(data.stationboard)
+            //console.log(data.stationboard)
         };
         fetchStopDetailData();
     }, []);
@@ -40,18 +41,9 @@ const StopDetail = ({ route }) => {
                         <Text style={stylesStops.stopName}>{stopData.station.name}</Text>
                     </View>
                 )}
-                {stopData.stationboard && (
+                {stopData && (
                     <View>
-                        {stopData.stationboard?.map((linee, index) => (
-                            <View key={index} style={stylesStops.cardDetail}>
-                                <Text style={stylesStops.lineeName}>Linea {linee.number}</Text>
-                                <Text>Direzione: {linee.to}</Text>
-                                <Text>Partenza: {linee.stop.departure}</Text>
-                                {(!(linee.stop.delay == 0) && !(linee.stop.delay == null)) &&
-                                    <Text style={stylesStops.late}>Ritardo: {linee.stop.delay}</Text>
-                                }
-                            </View>
-                        ))}
+                        <RowStopDetail detail={stopData} />
                     </View>
                 )}
             </View>
