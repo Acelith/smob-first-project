@@ -44,6 +44,18 @@ const stylesStops = StyleSheet.create({
     late: {
         color: "red",
     },
+    searchField: {
+      justifyContent: "center",
+      alignItems: "center",
+        borderRadius: 8,
+        borderColor: 'red',
+        borderWidth: 1,
+        backgroundColor: 'whitesmoke',
+        margin: 5,
+        padding: 10,
+        fontWeight: "bold",
+        alignContent: "center",
+    }
 });
 
 export { stylesStops };

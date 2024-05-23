@@ -10,7 +10,7 @@ import { ScrollView, Text, View, TextInput, Pressable } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import StopDetail from "../components/StopDetail";
-const API_URL = "http://transport.opendata.ch/v1/locations";
+
 
 const SearchStop = ({ route }) => {
   const [query, setQuery] = useState("");
@@ -34,11 +34,13 @@ const SearchStop = ({ route }) => {
 
   return (
     <ScrollView style={stylesStops.containerScroll}>
-      <TextInput
-        style={stylesStops.card}
-        onChangeText={(newText) => setQuery(newText)}
-        placeholder="Cerca fermata"
-      />
+      <View style={stylesStops.containerDetail}>
+        <TextInput
+          style={stylesStops.searchField}
+          onChangeText={(newText) => setQuery(newText)}
+          placeholder="Cerca fermata"
+        />
+      </View>
       {stopData && (
         <View>
           {stopData.map((fermata, index) => (
