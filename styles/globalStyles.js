@@ -31,6 +31,7 @@ const stylesStops = StyleSheet.create({
     },
     stopName: {
         fontWeight: "bold",
+        fontSize: "xx-large",
         alignContent: "center",
     },
     lineeName: {

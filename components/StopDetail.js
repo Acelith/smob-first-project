@@ -34,13 +34,22 @@ const StopDetail = ({ route }) => {
     return (
         <ScrollView style={stylesStops.containerScroll}>
             <View>
+            
+            {stopData.station && (
+                    <View style={stylesStops.containerDetail}>
+                        <Text style={stylesStops.stopName}>{stopData.station.name}</Text>
+                    </View>
+                )}
                 {stopData.stationboard && (
                     <View>
                         {stopData.stationboard?.map((linee, index) => (
-                            <View key={index} style={stylesStops.card}>
-                                <Text>Linea 1</Text>
-                                <Text>Direction: {linee.to}</Text>
-                                <Text>Departure at: {linee.stop.departure}</Text>
+                            <View key={index} style={stylesStops.cardDetail}>
+                                <Text style={stylesStops.lineeName}>Linea 1</Text>
+                                <Text>Direzione: {linee.to}</Text>
+                                <Text>Partenza: {linee.stop.departure}</Text>
+                                {linee.stop.delay != 0 &&
+                                    <Text style={stylesStops.late}>Ritardo: {linee.stop.delay}</Text>
+                                }
                             </View>
                         ))}
                     </View>
