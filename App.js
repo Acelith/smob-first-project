@@ -1,3 +1,9 @@
+/*
+globalStyles.js
+Autore: Joël Jon Moix && Lara Simonetti
+Utilità: File principale dell'applicazione
+*/
+
 import { NavigationContainer} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
