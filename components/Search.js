@@ -1,15 +1,16 @@
 /*
     RowStopDetail.js
     Autore: Joël Moix
-    Utilità: questa componente è stata sviluppata per ...
-    Utilizzo: per utilizzare questa componente è necessario includerla ...., 
-passarle in argomento (props, ...) n dati nel formato yyyy
+    Utilità: Questa componente serve per cercare una fermata specifica
+    Utilizzo: Richiamare il componente per utilizzarlo
 */
+// Importo i componenti di React utili
 import { useEffect, useState } from "react";
 import { ScrollView, Text, View, TextInput, Pressable } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
-import StopDetail from "../components/StopDetail";
+
+// Importo l'URL dell'API
 import { API_URL } from "../config/config";
 
 const SearchStop = () => {

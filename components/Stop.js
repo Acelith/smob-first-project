@@ -2,18 +2,21 @@
 Stop.js
 Autore: Joël Jon Moix
 Utilità: Questa è la schermta principale di selezione per le fermate dell'autobus
-Utilizzo: 
+Utilizzo: Richiamare il componente per utilizzarlo
 */
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+// Importo i componenti di React utili 
+import { Text, View, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
+import { ScrollView } from "react-native-web";
+
+
 // Importo hook per posizione
 import usePosition from "../hooks/usePosition";
 
+// Importo l'URL dell'API
 import { API_URL } from "../config/config";
-import { ScrollView } from "react-native-web";
 
 const Fermate = () => {
   const navigation = useNavigation();
