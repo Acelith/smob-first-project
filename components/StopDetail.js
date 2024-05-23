@@ -11,8 +11,7 @@ import { useEffect, useState } from "react";
 import { ScrollView, Text, View,  } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 
-const API_URL = "http://transport.opendata.ch/v1/stationboard";
-
+import {API_URL} from "../config/config";
 
 const StopDetail = ({ route }) => {
     //console.log(route)
@@ -21,7 +20,7 @@ const StopDetail = ({ route }) => {
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
-            const response = await fetch(`${API_URL}?id=${stationId}&limit=20`);
+            const response = await fetch(`${API_URL}/stationboard?id=${stationId}&limit=20`);
             const data = await response.json();
             data.stationboard.map((item) => {
                 item.stop.departure = moment(item.stop.departure).format('HH:mm');
