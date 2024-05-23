@@ -11,13 +11,11 @@ import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 // Importo hook per posizione
 import usePosition from "../hooks/usePosition";
-
-// Importo stopDetail
-import StopDetail from "../components/StopDetail";
 import { ScrollView } from "react-native-web";
 
 const Fermate = () => {
   const navigation = useNavigation();
+  
   const goto = (id) => {
     navigation.push("StopDetail", { id: id });
   };
