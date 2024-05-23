@@ -9,16 +9,41 @@ import { StyleSheet, Dimensions } from "react-native";
 
 const stylesStops = StyleSheet.create({
     card: {
-      flex: 1,
-      borderRadius: 8,
-      borderColor: '#000',
-      borderWidth: 1,
-      backgroundColor: '#fff',
-      margin: 10,
-      padding: 10,
-    },containerScroll: {
-      height: Dimensions.get('window').height,
+        flex: 1,
+        borderRadius: 8,
+        borderColor: '#000',
+        borderWidth: 1,
+        backgroundColor: '#fff',
+        margin: 5,
+        padding: 10,
     },
-  });
+    cardDetail: {
+        flex: 1,
+        borderRadius: 8,
+        borderColor: '#000',
+        borderWidth: 1,
+        backgroundColor: '#fff',
+        margin: 5,
+        padding: 15,
+    },
+    containerScroll: {
+        height: Dimensions.get('window').height,
+    },
+    stopName: {
+        fontWeight: "bold",
+        alignContent: "center",
+    },
+    lineeName: {
+        fontWeight: "bold",
+    },
+    containerDetail: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    late: {
+        color: "red",
+    },
+});
 
-  export { stylesStops };
+export { stylesStops };
