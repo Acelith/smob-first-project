@@ -36,6 +36,7 @@ const stylesStops = StyleSheet.create({
     },
     lineeName: {
         fontWeight: "bold",
+        fontSize: "medium"
     },
     containerDetail: {
         flex: 1,

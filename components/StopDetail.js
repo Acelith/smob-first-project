@@ -26,7 +26,7 @@ const StopDetail = ({ route }) => {
                 item.stop.departure = moment(item.stop.departure).format('HH:mm');
             })
             setStopData(data);
-            //console.log(data.stationboard)
+            console.log(data.stationboard)
         };
         fetchStopDetailData();
     }, []);
@@ -47,7 +47,7 @@ const StopDetail = ({ route }) => {
                                 <Text style={stylesStops.lineeName}>Linea 1</Text>
                                 <Text>Direzione: {linee.to}</Text>
                                 <Text>Partenza: {linee.stop.departure}</Text>
-                                {linee.stop.delay != 0 &&
+                                {(!(linee.stop.delay == 0) && !(linee.stop.delay == null)) &&
                                     <Text style={stylesStops.late}>Ritardo: {linee.stop.delay}</Text>
                                 }
                             </View>
