@@ -44,7 +44,7 @@ const StopDetail = ({ route }) => {
                     <View>
                         {stopData.stationboard?.map((linee, index) => (
                             <View key={index} style={stylesStops.cardDetail}>
-                                <Text style={stylesStops.lineeName}>Linea 1</Text>
+                                <Text style={stylesStops.lineeName}>Linea {linee.number}</Text>
                                 <Text>Direzione: {linee.to}</Text>
                                 <Text>Partenza: {linee.stop.departure}</Text>
                                 {(!(linee.stop.delay == 0) && !(linee.stop.delay == null)) &&
