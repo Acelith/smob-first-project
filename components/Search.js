@@ -10,7 +10,7 @@ import { ScrollView, Text, View, TextInput, Pressable } from "react-native";
 import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import StopDetail from "../components/StopDetail";
-
+import { API_URL } from "../config/config";
 
 const SearchStop = ({ route }) => {
   const [query, setQuery] = useState("");
@@ -24,7 +24,7 @@ const SearchStop = ({ route }) => {
   useEffect(() => {
     if (query !== "") {
       const fetchStopDetailData = async () => {
-        const response = await fetch(`${API_URL}?query=${query}&type=all`);
+        const response = await fetch(`${API_URL}locations?query=${query}&type=all`);
         const data = await response.json();
         setStopData(data.stations);
       };

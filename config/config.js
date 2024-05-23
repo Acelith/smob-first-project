@@ -6,4 +6,4 @@
 passarle in argomento (props, ...) n dati nel formato yyyy
 */
 
-const API_URL = "http://transport.opendata.ch/v1/locations";
+export const API_URL = "http://transport.opendata.ch/v1/";

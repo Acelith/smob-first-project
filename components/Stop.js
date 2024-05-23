@@ -11,11 +11,12 @@ import { stylesStops } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 // Importo hook per posizione
 import usePosition from "../hooks/usePosition";
+
+import { API_URL } from "../config/config";
 import { ScrollView } from "react-native-web";
 
 const Fermate = () => {
   const navigation = useNavigation();
-  
   const goto = (id) => {
     navigation.push("StopDetail", { id: id });
   };
@@ -26,7 +27,6 @@ const Fermate = () => {
   useEffect(() => {
     const fetchData = async () => {
       //Faccio la richiesta API
-      const API_URL = "https://transport.opendata.ch/v1/";
       const API_URI = `locations?x=${location.coords.latitude}&y=${location.coords.logitude}&type=all`;
 
       const response = await fetch(`${API_URL}${API_URI}`);
