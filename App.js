@@ -18,8 +18,8 @@ const App = () => {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={TabNavigator} />
-        <Stack.Screen name="Fermate" component={Fermate} />
-        <Stack.Screen name="StopDetail" component={StopDetail} options={{ headerShown: true }} />
+        <Stack.Screen name="Fermate" component={Fermate}/>
+        <Stack.Screen name="StopDetail" component={StopDetail} options={{ headerShown: true, title: 'Dettaglio della fermata' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -39,18 +39,18 @@ const TabNavigator = () => {
           tabBarLabel: "Fermate",
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Ionicons name="train-outline" color={color} size={size} />
           ),
         }}
       />
       <Tab.Screen
-        name="SearchStop"
+        name="Cerca fermata"
         component={Search}
         options={{
           tabBarLabel: "Search",
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Ionicons name="search-outline" color={color} size={size} />
           ),
         }}
       />
