@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import StopDetail from "../components/StopDetail";
 import { API_URL } from "../config/config";
 
-const SearchStop = ({ route }) => {
+const SearchStop = () => {
   const [query, setQuery] = useState("");
   const [stopData, setStopData] = useState([]);
 
@@ -23,6 +23,7 @@ const SearchStop = ({ route }) => {
 
   useEffect(() => {
     if (query !== "") {
+      setStopData("");
       const fetchStopDetailData = async () => {
         const response = await fetch(`${API_URL}locations?query=${query}&type=all`);
         const data = await response.json();
