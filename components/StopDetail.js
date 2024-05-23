@@ -20,7 +20,7 @@ const StopDetail = ({ route }) => {
 
     useEffect(() => {
         const fetchStopDetailData = async () => {
-            const response = await fetch(`${API_URL}/stationboard?id=${stationId}&limit=20`);
+            const response = await fetch(`${API_URL}stationboard?id=${stationId}&limit=20`);
             const data = await response.json();
             data.stationboard.map((item) => {
                 item.stop.departure = moment(item.stop.departure).format('HH:mm');
